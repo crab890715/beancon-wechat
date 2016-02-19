@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>${user.name }</div> 
+<div>${username }</div> 
 </body>
 </html>

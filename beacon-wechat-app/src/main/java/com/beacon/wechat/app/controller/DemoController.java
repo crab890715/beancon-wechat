@@ -6,19 +6,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.beacon.wechat.api.model.User;
-import com.beacon.wechat.api.service.UserService;
+import com.beacon.wechat.app.biz.DemoBiz;
 @Controller 
 @RequestMapping("/demo")
 //@Controller
 public class DemoController {
 	@Autowired
-	UserService userService;
+	DemoBiz demoBiz;
 	@RequestMapping(value="/demo",method=RequestMethod.GET) 
 	public ModelAndView demo() { 
-		User u = userService.findUserById(1l);
 		ModelAndView view = new ModelAndView("index");
-		view.addObject("user", u);
+		view.addObject("username", demoBiz.getName(1l));
 		return view;
 	}
 }
