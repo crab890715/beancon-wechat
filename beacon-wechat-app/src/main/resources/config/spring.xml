@@ -15,9 +15,9 @@
         <context:property-placeholder location="classpath:/config/jdbc.develop.properties,classpath:/config/redis.develop.properties,classpath:/config/memcache.develop.properties"/>
     </beans>
     <beans profile="production">
-        <context:property-placeholder location="classpath:/config/jdbc.develop.properties,classpath:/config/redis.develop.properties,classpath:/config/memcache.develop.properties"/>
+        <context:property-placeholder location="classpath:/config/jdbc.production.properties,classpath:/config/redis.production.properties,classpath:/config/memcache.production.properties"/>
     </beans>
     <beans profile="test">
-        <context:property-placeholder location="classpath:/config/jdbc.develop.properties,classpath:/config/redis.develop.properties,classpath:/config/memcache.develop.properties"/>
+        <context:property-placeholder location="classpath:/config/jdbc.test.properties,classpath:/config/redis.test.properties,classpath:/config/memcache.test.properties"/>
     </beans>
 </beans>
