@@ -37,7 +37,6 @@
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
 			</dependency>
-
 			<!-- dubbo -->
 			<dependency>
 				<groupId>com.alibaba</groupId>

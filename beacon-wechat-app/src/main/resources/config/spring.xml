@@ -11,6 +11,9 @@
     http://www.springframework.org/schema/context/spring-context-4.0.xsd">
    <import resource="spring-mybatis.xml" />
    <import resource="spring-services.xml" />
+   <import resource="spring-weixin.xml" />
+   <import resource="spring-redis.xml" />
+   <import resource="spring-memcache.xml" />
    <beans profile="develop">
         <context:property-placeholder location="classpath:/config/weixin.develop.properties,classpath:/config/jdbc.develop.properties,classpath:/config/redis.develop.properties,classpath:/config/memcache.develop.properties"/>
     </beans>
