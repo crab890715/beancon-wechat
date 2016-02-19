@@ -2,7 +2,22 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://code.alibabatech.com/schema/dubbo 
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd">
    <import resource="spring-mybatis.xml" />
    <import resource="spring-services.xml" />
+   <beans profile="develop">
+        <context:property-placeholder location="classpath:/config/jdbc.develop.properties,classpath:/config/redis.develop.properties,classpath:/config/memcache.develop.properties"/>
+    </beans>
+    <beans profile="production">
+        <context:property-placeholder location="classpath:/config/jdbc.develop.properties,classpath:/config/redis.develop.properties,classpath:/config/memcache.develop.properties"/>
+    </beans>
+    <beans profile="test">
+        <context:property-placeholder location="classpath:/config/jdbc.develop.properties,classpath:/config/redis.develop.properties,classpath:/config/memcache.develop.properties"/>
+    </beans>
 </beans>
