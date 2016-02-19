@@ -12,12 +12,12 @@
    <import resource="spring-mybatis.xml" />
    <import resource="spring-services.xml" />
    <beans profile="develop">
-        <context:property-placeholder location="classpath:/config/jdbc.develop.properties,classpath:/config/redis.develop.properties,classpath:/config/memcache.develop.properties"/>
+        <context:property-placeholder location="classpath:/config/weixin.develop.properties,classpath:/config/jdbc.develop.properties,classpath:/config/redis.develop.properties,classpath:/config/memcache.develop.properties"/>
     </beans>
     <beans profile="production">
-        <context:property-placeholder location="classpath:/config/jdbc.production.properties,classpath:/config/redis.production.properties,classpath:/config/memcache.production.properties"/>
+        <context:property-placeholder location="classpath:/config/weixin.production.properties,classpath:/config/jdbc.production.properties,classpath:/config/redis.production.properties,classpath:/config/memcache.production.properties"/>
     </beans>
     <beans profile="test">
-        <context:property-placeholder location="classpath:/config/jdbc.test.properties,classpath:/config/redis.test.properties,classpath:/config/memcache.test.properties"/>
+        <context:property-placeholder location="classpath:/config/weixin.test.properties,classpath:/config/jdbc.test.properties,classpath:/config/redis.test.properties,classpath:/config/memcache.test.properties"/>
     </beans>
 </beans>
