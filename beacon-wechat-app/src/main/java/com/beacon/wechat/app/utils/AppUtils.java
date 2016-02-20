@@ -2,6 +2,7 @@ package com.beacon.wechat.app.utils;
 
 import java.io.IOException;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -48,4 +49,28 @@ public class AppUtils {
 		}
         return null;
     }
+    /**
+     * 设置COOKIE
+     */
+    public static void setCookie(String name,String value,int maxAge){
+        Cookie cookie=new Cookie(name,value);
+        cookie.setMaxAge(maxAge);
+        cookie.setPath("/");
+        response().addCookie(cookie);
+    }
+    /**
+     * 设置COOKIE
+     */
+    public static String getCookie(String name){
+    	Cookie[] cookies=request().getCookies();
+    	if(cookies!=null){
+            for(Cookie ck : cookies){
+                if(name.equalsIgnoreCase(ck.getName())){
+                    return ck.getValue();
+                }
+            }
+    	}
+        return null;
+    }
+    public static void deleteCookie(String name){ setCookie(name,"",0);}
 }
