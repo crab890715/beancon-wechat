@@ -14,6 +14,7 @@
    <import resource="spring-weixin.xml" />
    <import resource="spring-redis.xml" />
    <import resource="spring-memcache.xml" />
+   <import resource="spring-cache.xml" />
    <beans profile="develop">
         <context:property-placeholder location="classpath:/config/weixin.develop.properties,classpath:/config/jdbc.develop.properties,classpath:/config/redis.develop.properties,classpath:/config/memcache.develop.properties"/>
     </beans>

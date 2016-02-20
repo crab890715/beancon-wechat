@@ -1,11 +1,17 @@
 package com.beacon.wechat.app.utils.cache;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
+
+import com.beacon.wechat.app.controller.WechatController;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 
 public class GuavaCache{
+	private Logger log = Logger.getLogger(GuavaCache.class);
 	private Cache<String, Object> cache;
 	private long maxinumSize = 10000;
 	private int expiretime = 10;
@@ -54,14 +60,21 @@ public class GuavaCache{
 	}
 
 	public Object get(String arg0) {
+		try {
+			return this.cache.get(arg0, new Callable<Object>() {
+
+				@Override
+				public Object call() throws Exception {
+					return null;
+				}
+			});
+		} catch (ExecutionException e) {
+			log.error(e);
+		}
 		return null;
 	}
 
-	public <T> T get(String arg0, Class<T> arg1) {
-		return null;
-	}
 	public void put(String arg0, Object arg1) {
-		this.cache.put(arg0, arg1);
 		this.cache.put(arg0, arg1);
 	}
 

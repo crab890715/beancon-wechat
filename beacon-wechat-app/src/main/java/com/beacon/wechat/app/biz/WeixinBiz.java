@@ -3,6 +3,9 @@ package com.beacon.wechat.app.biz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.beacon.wechat.app.utils.AppUtils;
+import com.beacon.wechat.app.utils.cache.GuavaCache;
+
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;
@@ -19,6 +22,8 @@ public class WeixinBiz {
 	protected WxMpService wxMpService;
 	@Autowired
 	protected WxMpMessageRouter wxMpMessageRouter;
+	@Autowired
+	private GuavaCache weixinCache;
 	public String oauth2buildAuthorizationUrl(){
 		return wxMpService.oauth2buildAuthorizationUrl(WxConsts.OAUTH2_SCOPE_USER_INFO, null);
 	}
@@ -40,5 +45,8 @@ public class WeixinBiz {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	public void console(){
+		System.err.println(AppUtils.toJson(weixinCache.get("weixin")));
 	}
 }
