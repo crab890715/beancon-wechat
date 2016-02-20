@@ -22,6 +22,9 @@ public class WeixinBiz {
 	public String oauth2buildAuthorizationUrl(){
 		return wxMpService.oauth2buildAuthorizationUrl(WxConsts.OAUTH2_SCOPE_USER_INFO, null);
 	}
+	public String oauth2buildAuthorizationUrl(String url){
+		return wxMpService.oauth2buildAuthorizationUrl(url,WxConsts.OAUTH2_SCOPE_USER_INFO, null);
+	}
 	public WxMpOAuth2AccessToken oauth2getAccessToken(String code){
 		try {
 			return wxMpService.oauth2getAccessToken(code);
