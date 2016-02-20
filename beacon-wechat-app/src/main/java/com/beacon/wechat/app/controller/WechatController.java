@@ -10,6 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.beacon.wechat.app.biz.WeixinBiz;
 import com.beacon.wechat.app.utils.AppUtils;
+
+import me.chanjar.weixin.mp.bean.result.WxMpOAuth2AccessToken;
+import me.chanjar.weixin.mp.bean.result.WxMpUser;
 @Controller 
 @RequestMapping("/wechat")
 public class WechatController {
@@ -24,8 +27,10 @@ public class WechatController {
 	public String auth(String code) { 
 		if(StringUtils.isBlank(code)){
 			return "redirect:" + weixinBiz.oauth2buildAuthorizationUrl(AppUtils.request().getRequestURL().toString());
-//			return "redirect:" + weixinBiz.oauth2buildAuthorizationUrl("http://www.baidu.com");
 		}
+		WxMpOAuth2AccessToken token = weixinBiz.oauth2getAccessToken(code);
+		WxMpUser user = weixinBiz.oauth2getUserInfo(token);
+		log.info(AppUtils.toJson(user));
 		return null;
 	}
 	
