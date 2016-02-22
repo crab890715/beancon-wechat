@@ -22,10 +22,15 @@ public class WechatController {
 	private WeixinBiz weixinBiz;
 	@Autowired
 	private GuavaCache weixinCache;
+	@RequestMapping(value="/index.php",method=RequestMethod.GET) 
+	public String index(String code) { 
+		return null;
+	}
+	
 	@RequestMapping(value="/auth",method=RequestMethod.GET) 
 	public String auth(String code) { 
 		if(StringUtils.isBlank(code)){
-			return "redirect:" + weixinBiz.oauth2buildAuthorizationUrl(AppUtils.request().getRequestURL().toString());
+			return "redirect:" + weixinBiz.oauth2buildAuthorizationUrl(AppUtils.url());
 		}
 		WxMpOAuth2AccessToken token = weixinBiz.oauth2getAccessToken(code);
 		WxMpUser user = weixinBiz.oauth2getUserInfo(token);

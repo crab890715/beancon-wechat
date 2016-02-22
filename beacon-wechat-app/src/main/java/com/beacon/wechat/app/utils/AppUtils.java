@@ -29,6 +29,11 @@ public class AppUtils {
     public static HttpServletResponse response(){
         return ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getResponse();
     }
+    
+    public static String url(){
+    	HttpServletRequest request = request();
+        return request.getRequestURL().toString()+"?"+request.getQueryString();
+    }
     public static <T> T fromJson(String json,TypeReference<T> tr) {
         try {
 			return mapper.readValue(json,tr);
