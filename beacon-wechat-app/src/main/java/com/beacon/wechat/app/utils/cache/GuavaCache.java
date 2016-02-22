@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 
-import com.beacon.wechat.app.controller.WechatController;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 
